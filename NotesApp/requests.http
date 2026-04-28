@@ -1,0 +1,73 @@
+@baseUrl = https://localhost:5081
+
+### GET все категории
+GET https://localhost:5081/api/categories
+
+### GET категория с id=2
+GET https://localhost:5081/api/categories/2
+
+### GET категория с заметками
+GET https://localhost:5081/api/categories/2/notes
+
+### POST создать категорию
+POST https://localhost:5081/api/categories
+Content-Type: application/json
+
+{
+  "name": "Хобби",
+  "description": "Мои увлечения",
+  "color": "#9b59b6"
+}
+
+### PUT обновить категорию
+PUT https://localhost:5081/api/categories/1
+Content-Type: application/json
+
+{
+  "name": "Рабочие задачи",
+  "description": "Важные рабочие проекты",
+  "color": "#e74c3c"
+}
+
+### DELETE категорию (должна быть ошибка, если есть заметки)
+DELETE https://localhost:5081/api/categories/1
+
+### GET все заметки
+GET https://localhost:5081/api/notes
+
+### GET заметки с фильтрами
+GET https://localhost:5081/api/notes?categoryId=2&search=LINQ&minPriority=3
+
+### GET заметка по id
+GET https://localhost:5081/api/notes/1
+
+### POST создать заметку
+POST https://localhost:5081/api/notes
+Content-Type: application/json
+
+{
+  "title": "Новая заметка",
+  "content": "Содержимое новой заметки",
+  "priority": 4,
+  "categoryId": 2
+}
+
+### PUT обновить заметку
+PUT https://localhost:5081/api/notes/1
+Content-Type: application/json
+
+{
+  "title": "Обновленный заголовок",
+  "content": "Обновленное содержимое",
+  "priority": 5,
+  "categoryId": 2
+}
+
+### PATCH закрепить заметку
+PATCH https://localhost:5081/api/notes/1/pin
+
+### PATCH архивировать заметку
+PATCH https://localhost:5081/api/notes/5/archive
+
+### DELETE заметку
+DELETE https://localhost:5081/api/notes/5
